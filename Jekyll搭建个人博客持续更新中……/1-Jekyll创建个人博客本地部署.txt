@@ -9,3 +9,15 @@
 	bundle exec jekyll serve
 进行本地查看是否部署成功：
 	http://localhost:4000
+
+baixin:百度统计：
+	<script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?{{site.baidu.id}}";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+
+8ba1c6be0953b6f9c2ba38e57f615421
