@@ -1,0 +1,20 @@
+2，将本地博客部署到github上命令：
+	-初始化部署：
+		-先找到你的githbu上的Xminghua.githbu.io这个仓库，然后复制其网址，进行克隆操作；
+		-在本地启动git-bash，通过git clone https://github.com/Xminghua/Xminghua.github.io.git，将githbu上的工程复制到本地文件目录下；		
+		-然后将你的jekyll工程下的所有文件夹都复制到此目录下来；
+		-git add .，添加github上的没有的文件；
+		-git commit -a -m "v0.0.1 first commit"需要把这些修改先提交到本地git中，这是为后面为将本地修改提交到github上做准备；
+		-git push origin master，将本地修改提交到github上去。然后根据提示初入你的github账号和密码就可以了。
+
+  	【$ git push -u origin master
+To git@github.com:xxx/xxx.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'git@github.com:xxx/xxx.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details】如果是出现了这个错误的话，意思是github远程仓库中的readme.md文件不在本地仓库中，可以使用下面的命令来解决：
+		-git pull --rebase origin master
+		-git push -u origin master

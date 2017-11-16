@@ -1,0 +1,6 @@
+1，jekyll 启动本地服务器
+   原来是
+	jekyll serve
+但是现在我是克隆下来别人的主题，
+所以，我需要输入： 
+	bundle exec jekyll serve
