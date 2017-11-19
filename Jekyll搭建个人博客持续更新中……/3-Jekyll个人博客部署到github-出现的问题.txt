@@ -1,0 +1,47 @@
+1，非第一次进行部署的时候：
+	-还是先来过一道命令吧：
+		-git init（对已有项目进行初始化）
+		-git add .（添加github上没有的命令）		-git commit -a -m "v0.0.1 firstcommit"（然后我们需要把这些修改先提交到本地的git中，这是为后面将本地git修改提交到github上做准备，）		-git push origin master（本地提交完成之后，当然是把本地修改提交到github上啦，这一步骤通过指令“git push origin master”,其中最后一个参数标志的就是提交到的指定版本号，与github上的Branch对应：）
+
+2，错误分析大全：
+	-错误1：
+		-错误：Not a git repository (or any of the parent directories) 
+		-原因：这是由于本地版本管理仓库被删除了，需要重新初始化仓库，建立新的仓库：
+		-解决方法：git init
+    		-再次编译又会出现如下错误：fatla: bad default revision ‘HEAD’
+		-原因：这是由于仓库里没有任提交在里面，所以它会报这个错。
+		-解决方法：再执行下面的命令： 
+查看仓库状态： git status 
+		-再次执行
+			-git commit -a -m "v0.0.1 firstcommit"没问题了。 
+			-也可以把这个命令分开执行：
+				-添加本地工程所有文件到仓库：git add -A
+				-提交到仓库：git commit -m "v0.0.1 firstcommit"
+
+
+	-错误2：
+		-提交时使用git push origin master出现下面这个问题：
+		-错误：failed to push some refs to git
+		-原因：创建该项目时显示尝试使用了git for win的客户端离线版，发现不能上传，又在github上重新创建仓库，建立README.md，导致该文件不在本地代码中
+		-解决方法：git pull --rebase origin master
+		-再次执行git push origin master即可。
+
+	-错误3：
+		-输入 git push -u origin master的时候报错
+		-错误：origin does not to be a git repository
+		-解决方法：git remote add origin git@github.com:yourusername/test.git
+		-再次执行git push -u origin master即可。
+
+	-错误4：
+		-输入：	git push -u origin master的时候报错
+		-错误：failed to push some refs to 'git@github.com:……"Updates were rejected because the remote contains work that you do not have locally . This is usually caused by another reponsitory pushing to
+		-原因：因为我在github上修改了自己的文件，在上传本地文件之前没有把github上的文件拉倒本地，意思是本地和远程的文件应该合并后才能上传本地的新文件
+		-解决方法：
+			-先拉下来：（会自动合并的，不用担心）：git push origin master
+			-在上传：git push -u origin master
+
+	-错误5：
+		-输入：git init
+		-错误：error: failed to push some refs to 'https://github.com/shiren1118/iOS_code_agile.git'
+hint: Updates were rejected because the tip of your current branch is behind……
+		-解决方法：git push -u origin master -f 
